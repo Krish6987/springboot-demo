@@ -7,17 +7,17 @@ pipeline{
                 sh "mvn clean install"
             }
         }
-    /*stage('Sonar') 
+    stage('Sonar') 
        {environment {
            scannerHome=tool 'sonarScanner'
        }
             steps {
-                withSonarQubeEnv('SonarQube') {
+                withSonarQubeEnv('sonarQube') {
                 sh "mvn sonar:sonar"
                 }
             }
         }
-        stage("Quality Gate") {
+        /*stage("Quality Gate") {
             steps {
               timeout(time: 1, unit: 'HOURS') {
                 waitForQualityGate abortPipeline: true
