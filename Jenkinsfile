@@ -2,7 +2,7 @@ pipeline{
     agent any
     tools { maven "maven" }
     stages{
-     stage ('Build'){
+     /*stage ('Build'){
             steps{
                 sh "mvn clean install"
             }
@@ -23,11 +23,11 @@ pipeline{
                 waitForQualityGate abortPipeline: true
               }
          }
-        }
+        }*/
         stage ('Nexus'){
             steps{
                 withCredentials([usernamePassword(credentialsId: 'Nexus_Credentials', passwordVariable: 'password', usernameVariable: 'username')]) {
-                    sh label: '', script: 'curl -u $username:$password --upload-file target/springboot-0.0.1-SNAPSHOT.war http://http://159.65.148.159:8081/nexus/content/repositories/srinivas-devops/springboot-0.0.1-SNAPSHOT.war'
+                    sh label: '', script: 'curl -u $username:$password --upload-file target/springboot-0.0.1-SNAPSHOT.war http://159.65.148.159:8081/nexus/content/repositories/srinivas-devops/springboot-0.0.1-SNAPSHOT.war'
                 }
             }
         }
