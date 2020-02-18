@@ -23,17 +23,17 @@ pipeline{
                 waitForQualityGate abortPipeline: true
               }
          }
-        }*/
+        }
         stage ('Nexus'){
             steps{
                 withCredentials([usernamePassword(credentialsId: 'Nexus_Credentials', passwordVariable: 'password', usernameVariable: 'username')]) {
                     sh label: '', script: 'curl -u $username:$password --upload-file target/springboot-0.0.1-SNAPSHOT.war http://159.65.148.159:8081/nexus/content/repositories/srinivas-devops/springboot-0.0.1-SNAPSHOT.war'
                 }
             }
-        }
+        }*/
         stage('Deploy to Development'){
             steps{
-             deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://159.65.155.75:8080/')], contextPath: null, onFailure: false, war: '**/*.war'
+             deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://159.65.155.75:8080')], contextPath: null, war: '**/*.war'
             }
         }
         /*stage('Deploy to Ansible Master'){
