@@ -2,7 +2,7 @@ pipeline{
     agent any
     tools { maven "maven" }
     stages{
-     /*stage ('Build'){
+     stage ('Build'){
             steps{
                 sh "mvn clean install"
             }
@@ -30,7 +30,7 @@ pipeline{
                     sh label: '', script: 'curl -u $username:$password --upload-file target/springboot-0.0.1-SNAPSHOT.war http://159.65.148.159:8081/nexus/content/repositories/srinivas-devops/springboot-0.0.1-SNAPSHOT.war'
                 }
             }
-        }*/
+        }
         stage('Deploy to Development'){
             steps{
              deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://159.65.155.75:8080')], contextPath: null, war: '**/*.war'
