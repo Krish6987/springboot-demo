@@ -2,12 +2,12 @@ pipeline{
     agent any
     tools { maven "maven" }
     stages{
-     /*stage ('Build and Package'){
+     stage ('Build and Package'){
             steps{
-                sh "mvn clean install"
+                sh "mvn clean package"
             }
         }
-    stage('Code Analysis and Coverage- Sonar') 
+    /*stage('Code Analysis and Coverage- Sonar') 
        {environment {
            scannerHome=tool 'sonarScanner'
        }
