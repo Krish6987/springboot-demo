@@ -3,7 +3,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-body {font-family: Arial, Helvetica, sans-serif;}
+body {font-family: Arial, Helvetica, sans-serif; background-color: black}
 
 /* Full-width input fields */
 input[type=text], input[type=password] {
@@ -24,6 +24,7 @@ button {
   border: none;
   cursor: pointer;
   width: 100%;
+  border-radius: 5%;
 }
 
 button:hover {
@@ -78,7 +79,7 @@ span.psw {
   background-color: #fefefe;
   margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  width: 50%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button (x) */
@@ -126,10 +127,11 @@ span.psw {
 </style>
 </head>
 <body>
-
-<h2>Modal Login Form</h2>
+<div align="center" style="padding-top: 10%">
+<h2 style="color: white">Login Form</h2>
 <font color="red">${errorMessage}</font>
 <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+</div>
 
 <div id="id01" class="modal">
   
@@ -143,8 +145,8 @@ span.psw {
       <label for="uname"><b>Username</b></label>
       <input type="text" placeholder="Enter Username" name="name" required>
 
-      <label for="psw"><b>Email</b></label>
-      <input type="text" placeholder="Enter Password" name="password" required>
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="password" required>
         
       <button type="submit">Login</button>
       <label>
