@@ -26,9 +26,8 @@ pipeline{
         }
         stage ("Upload Artifacts"){
             steps{
-                withCredentials([usernamePassword(credentialsId: 'Nexus_Credentials', passwordVariable: 'password', usernameVariable: 'username')]) {
-                    sh label: '', script: 'curl -u $username:$password --upload-file target/springboot-demo-0.0.1-SNAPSHOT.war http://159.65.148.159:8081/nexus/content/repositories/srinivas-devops/springboot-0.0.1-SNAPSHOT.war'
-                }
+                nexusArtifactUploader artifacts: [[artifactId: 'spring-boot-starter-parent', classifier: '', file: '/var/lib/jenkins/workspace/Test-Spring/target/springboot-0.0.1-SNAPSHOT.war', type: 'war']], credentialsId: 'Nexus_Credentials', groupId: 'org.springframework.boot', nexusUrl: '159.65.148.159:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'srinivas-devops', version: '1.1'
+                
             }
         }
         stage("Deployment"){
